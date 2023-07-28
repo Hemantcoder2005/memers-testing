@@ -1,0 +1,133 @@
+* {
+  font-family: "Quicksand", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+  transition: all 0.3s;
+  outline: none;
+  /* text-transform: capitalize; */
+}
+
+body {
+  padding-top: 25%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.form-container {
+  border: 1px solid black;
+  width: fit-content;
+  margin: auto;
+  border: 2px solid rgb(0, 0, 140);
+  padding: 15px 15px 5px 15px;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.title {
+  font-size: 50px;
+  color: navy;
+  margin-bottom: 5px;
+}
+
+h1 {
+  font-size: 25px;
+  color: rgb(0, 0, 140);
+  margin-bottom: 5px;
+}
+
+h4 {
+  font-size: 15px;
+  /* color: rgb(0, 0, 140); */
+  margin-bottom: 5px;
+  padding: 10px 0px 3px 0px;
+}
+
+input {
+  color: rgb(0, 0, 140);
+  margin: 5px;
+  border-color: rgb(0, 0, 140);
+  padding: 2px;
+  /* text-transform: lowercase; */
+}
+::placeholder {
+  color: rgb(0, 0, 140);
+}
+button {
+  margin: 7px;
+  background-color: rgb(0, 0, 140);
+  border: none;
+  padding: 5px 6px;
+  color: white;
+  cursor: pointer;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  padding: 3px 0px 10px 0px;
+}
+
+.divider::before,
+.divider::after {
+  flex: 1;
+  content: "";
+  padding: 1px;
+  background-color: rgb(25, 25, 25);
+  margin: 1px;
+}
+
+.otp-input {
+  width: 30px;
+  height: 30px;
+  outline: none;
+}
+
+.google {
+  border: 1px solid rgb(0, 0, 140);
+  padding: 4px 5px 5px 5px;
+  background-color: rgba(255, 255, 255, 0.725);
+}
+
+.google a{
+  text-decoration: none;
+  color: rgb(0, 0, 140);
+  font-size: 15px;
+  padding-left: 10px;
+}
+
+.sandf {
+  padding-top: 11px;
+}
+
+.sandf a {
+  font-size: small;
+  color: rgb(0, 0, 140);
+  text-decoration: none;
+  
+}
+
+span {
+  letter-spacing: 2px;
+}
+
+.google {
+  position: relative;
+}
+
+.google img {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  left: 6px;
+  top: 6px;
+
+}
+
+
+@media screen and (min-width: 600px) {
+  body {
+    padding-top: 10%;
+  }
+}

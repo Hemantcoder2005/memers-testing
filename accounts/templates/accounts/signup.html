@@ -1,0 +1,119 @@
+{%extends 'accounts_basic.html'%}
+{%load static%}
+{%block title%}SignUp{%endblock%}
+{%block body%}
+
+{%if load_signup%}
+            <div class="form-container">
+                <div class="title">MEMER</div>
+                <div class="signup-title">
+                    <h1>Sign up</h1>
+                </div>
+                <form action="" method="post">
+                    {%csrf_token%}
+                    <div class="username">
+                        <input type="text" name="username" placeholder="Username"{%if is_error%}value="{{username}}"{%endif%} required/>
+                    </div>
+                    <div class="emailaddress-container">
+                        <input type="text" name="email" placeholder="E-mail ID"{%if is_error%}value="{{email}}"{%endif%} required/>
+                    </div>
+                    <div class="password1-container">
+                        <input type="password" name="pass1" placeholder="Enter password" required/>
+                    </div>
+                    <div class="password2-container">
+                        <input type="password" name="pass2" placeholder="Re-enter password" required/>
+                    </div>
+                    {%if is_error%}
+                    <p style="color: red;"> {{error_message}}</p>
+                    {%endif%}
+                    <div class="submit-button">
+                        <button type="submit">Submit</button>
+                    </div>
+                    <input type="hidden" name="what_to_load" value="100">
+                    
+                </form>
+            </div>
+            {%endif%}
+            <script>
+                $(document).ready(function() {
+                    function disableBack() {
+                        window.history.forward()
+                    }
+                    window.onload = disableBack();
+                    window.onpageshow = function(e) {
+                        if (e.persisted)
+                            disableBack();
+                    }
+                });
+            </script>
+        <!-- signup(a2) -->
+        {%if load_otp%}
+                <div class="form-container">
+                    <div class="title">MEMERS</div>
+                    <div class="signup-title">
+                        <h1>sign up</h1>
+                    </div>
+                    <div class="otp-message">
+                        <h4>Enter OTP</h4>
+                    </div>
+                    <form action="" method="post">
+                        {%csrf_token%}
+                        <div class="otp-container">
+                            <input name="otp1" class="otp-input" type="text" maxlength="1" />
+                            <input class="otp-input" type="text" maxlength="1" name="otp2"/>
+                            <input class="otp-input" type="text" maxlength="1" name="otp3"/>
+                            <input class="otp-input" type="text" maxlength="1" name="otp4"/>
+                        </div>
+                        {%if is_success%}
+                        <p style="color: green;"> {{success_message}}</p>
+                        <p style="color: green;"> {{success_message1}}</p>
+                        {%endif%}
+
+                        {%if is_error%}
+                    <p style="color: red;"> {{error_message}}</p>
+                    {%if expired%}
+                    <a href="">regenerate OTP<input type="hidden" name="re_gen" value="1" id=""></a>
+                    {%endif%}
+                    {%endif%}
+                        <div class="submit-button">
+                            <button type="submit">submit</button>
+                        </div>
+                        <input type="hidden" name="what_to_load" value="010">
+                        <input type="hidden" name="username" value="{{username}}">
+                        <input type="hidden" name="re_gen" value="0" id="">
+                    </form>
+                </div>
+                {%endif%}
+
+        <!-- signup(b) -->
+        {%if load_name %}
+                <div class="form-container">
+                    <div class="title">MEMERS</div>
+                    <div class="signup-title">
+                        <h1>sign up</h1>
+                    </div>
+                    <form action="" method="post">
+                        {%csrf_token%}
+
+                        <div class="firstname-container">
+                            <input name="fname" type="text" placeholder="firstname"  required>
+                        </div>
+                        <div class="lastname-container">
+                            <input type="text" placeholder="lastname" name="lname" required>
+                        </div>
+                        <div class="dob">
+                            <input type="date" name="dob" >
+                        </div>
+                        <div class="submit-button">
+                            <button type="submit">Submit</button>
+                        </div>
+                        <input type="hidden" name="what_to_load" value="001">
+                        <input type="hidden" name="username" value="{{username}}">
+
+                    </form>
+                </div>
+                {%endif%}
+
+
+
+{%endblock%}

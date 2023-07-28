@@ -1,0 +1,13 @@
+{%extends 'basic.html'%}
+{%block title%}{{user.username}}{%endblock%}
+
+{%block body%}
+
+<!-- Write your code here  -->
+<h1>Welcome to MEMER</h1>
+<p>Welcome, {{user.first_name}} {{user.last_name}}</p>
+<p>Email: {{user.email}}</p>
+<p>Account Verified: {{user.authenticate_email}}</p>
+<p>DOB: {{user.dob}}</p>
+<a href="/accounts/logout"><button>logout</button></a>
+{%endblock%}

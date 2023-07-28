@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {%load static%}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/394111977c.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-transform: capitalize;
+        transition: 0.3s;
+        font-family: "Quicksand", sans-serif;
+        outline: none;
+        color: white;
+        text-decoration: none;
+        border-color: rgb(74, 73, 73);
+      }
+      body {
+        background-color: rgb(2, 2, 2);
+        color: white;
+        cursor: url;
+      }
+
+      .hamburger {
+        display: none;
+      }
+
+      .profile-container-ham img {
+        display: none;
+      }
+
+      .left-column {
+        border-right: 2px solid rgb(74, 73, 73);
+        min-width: 130px;
+        width: 20vw;
+        max-width: 199px;
+        height: 95vh;
+        padding: 5px;
+      }
+
+      .profile-container {
+        /* border: 1px solid; */
+        display: flex;
+        padding: 10px 10px;
+        justify-content: space-around;
+        border: 0px solid;
+        border-radius: 8px;
+        background-color: rgb(33, 33, 33);
+      }
+
+      .profile-container img {
+        border: 1px solid rgb(255, 0, 255);
+        min-width: 30px;
+        min-height: 30px;
+        width: 3vw;
+        height: 3vw;
+        border-radius: 50%;
+      }
+
+      .profile-container p {
+        padding-top: 8px;
+      }
+
+      .bottom-container {
+        position: fixed;
+        /* border: 1px solid; */
+        min-width: 129px;
+        width: 19.8vw;
+        max-width: 199px;
+        bottom: 5vh;
+        /* border: 1px solid; */
+        left: 0px;
+        padding: 2px;
+        /* margin: 2px; */
+      }
+
+      .bottom-container * {
+        padding: 4px;
+      }
+
+      .settings,
+      .aboutus,
+      .copyright,
+      .tnc {
+        /* border: 1px solid; */
+        /* border-radius: 3px; */
+        /* margin-top: 3px; */
+        border-top: 2px solid rgb(74, 73, 73);
+        background-color: rgb(17, 17, 17);
+        text-align: center;
+      }
+
+      .tnc {
+        padding: 0px;
+      }
+
+      p {
+        text-align: center;
+        padding: 0px;
+      }
+
+      .content {
+        position: fixed;
+        top: 0px;
+        right: 6vh;
+        left: 23vh;
+        /* border: 1px solid red; */
+        overflow-y: scroll;
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        bottom: 5vh;
+        scrollbar-width: thin;
+        scrollbar-color: transparent transparent;
+      }
+
+      .content::-webkit-scrollbar {
+        width: 5px; /* Adjust the width as needed */
+      }
+
+      .content::-webkit-scrollbar-track {
+        background-color: transparent;
+      }
+
+      .content::-webkit-scrollbar-thumb {
+        background-color: transparent;
+      }
+
+      .content a {
+        padding: 20px 0px;
+        /* border: 1px solid; */
+      }
+      .content a img {
+        /* min-width: 350px; */
+        width: 480px; /*aspect ratio 16:13 */
+        height: 390px;
+        border: 3px solid rgb(44, 43, 43);
+        border-radius: 10px;
+      }
+
+      footer {
+        position: fixed;
+        width: 100%;
+        bottom: 1px;
+        border: 2px solid rgb(74, 73, 73);
+        height: 5vh;
+        text-align: center;
+        padding-top: 5px;
+      }
+
+      .right-column {
+        /* border: 1px solid; */
+        position: fixed;
+        right: 0px;
+        top: 0px;
+        height: 95vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .right-column i {
+        padding: 20px 5px 20px 5px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 772px) {
+        .left-column {
+          display: none;
+        }
+
+        .content {
+          text-align: center;
+          left: 0;
+          right: 0;
+          top: 25px;
+          z-index: -2;
+        }
+
+        .content a img {
+          /* min-width: 350px; */
+          width: 280px; /*aspect ratio 16:13 */
+          height: 208px;
+        }
+
+        .hamburger {
+          display: block;
+          z-index: 2;
+          margin-bottom: 2px;
+          display: flex;
+          justify-content: space-between;
+          padding: 4px;
+          border-bottom: 2px solid rgb(74, 73, 73);
+          background-color: rgb(27, 27, 27);
+        }
+
+        .profile-container-ham {
+          border-radius: 0px;
+        }
+
+        .profile-container-ham img {
+          border: 1px solid rgb(255, 0, 255);
+          min-width: 30px;
+          min-height: 30px;
+          width: 3vw;
+          height: 3vw;
+          border-radius: 50%;
+          display: block;
+        }
+
+        .profile-container-ham p {
+          display: inline;
+        }
+
+        .search {
+          align-self: center;
+          position: relative;
+        }
+
+        .fa-brands{
+          border-width: 2px 0px 2px 2px;
+          border-style: solid;
+          padding: 4px;
+          background-color: black;
+          border-radius: 4px 0px 0px 4px;
+        }
+
+        .search input {
+          padding: 4px;
+          border-radius: 0px 4px 4px 0px;
+          background-color: black;
+          color: white;
+          border-style: solid;
+          border-width: 2px 2px 2px 0px;
+          border-color: rgb(74, 73, 73);
+        }
+
+        .fa-bars{
+          cursor: pointer;
+        }
+
+        .ham {
+          align-self: center;
+        }
+
+        .right-column{
+          top: 40px;
+          bottom: 40px;
+        }
+        .fa-shuffle{
+          margin-bottom: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="hamburger">
+      <div class="profile-container-ham">
+        <img src="multicolored.png" alt="" />
+        <p></p>
+      </div>
+      <div class="search"><i class="fa-brands fa-searchengin"></i><input type="text" /></div>
+      <div class="ham"><i class="fa-solid fa-bars fa-xl"></i></div>
+    </div>
+    <div class="left-column">
+      <div class="profile-container">
+        <img src="multicolored.png" alt="" />
+        <p>{{user.name}}</p>
+      </div>
+      <div class="bottom-container">
+        <div class="settings">
+          <i class="fa-solid fa-gear"></i><a href="">Settings</a>
+        </div>
+        <div class="aboutus">
+          <i class="fa-regular fa-address-card"></i
+          ><a href="about.html">About Us</a>
+        </div>
+        <div class="copyright">&copy Copyright</div>
+        <div class="tnc"><p>Terms & Conditons</p></div>
+      </div>
+    </div>
+    <div class="content">
+      {for meme in memes}
+      <a href=""><img src="{%static '{{image}}'%}" alt="" /></a>
+      {%endfor%}
+    </div>
+    <div class="right-column">
+      <i class="fa-regular fa-thumbs-up fa-xl "></i>
+      <i class="fa-regular fa-heart fa-xl "></i>
+      <i class="fa-regular fa-comment fa-xl "></i>
+      <i class="fa-solid fa-shuffle fa-xl "></i>
+    </div>
+    <footer>*This is Footer*</footer>
+    <script>
+      let aboutus = document.getElementsByClassName("aboutus")[0];
+      let settings = document.getElementsByClassName("settings")[0];
+      let gear = document.getElementsByClassName("fa-gear")[0];
+      let about = document.getElementsByClassName("fa-regular")[0];
+      let like = document.getElementsByClassName("fa-thumbs-up")[0];
+      let heart = document.getElementsByClassName("fa-heart")[0];
+      let comment = document.getElementsByClassName("fa-comment")[0];
+      let shuffle = document.getElementsByClassName("fa-shuffle")[0];
+
+      settings.addEventListener("mouseover", function () {
+        gear.classList.toggle("fa-spin");
+      });
+
+      settings.addEventListener("mouseout", function () {
+        gear.classList.remove("fa-spin");
+      });
+
+      aboutus.addEventListener("mouseover", function () {
+        about.classList.toggle("fa-solid");
+      });
+
+      aboutus.addEventListener("mouseout", function () {
+        about.classList.toggle("fa-solid");
+      });
+
+      like.addEventListener("mouseover", function () {
+        like.classList.toggle("fa-solid");
+      });
+
+      like.addEventListener("mouseout", function () {
+        like.classList.remove("fa-solid");
+      });
+
+      heart.addEventListener("mouseover", function () {
+        heart.classList.toggle("fa-solid");
+      });
+
+      heart.addEventListener("mouseout", function () {
+        heart.classList.toggle("fa-solid");
+      });
+
+      comment.addEventListener("mouseover", function () {
+        comment.classList.toggle("fa-solid");
+      });
+
+      comment.addEventListener("mouseout", function () {
+        comment.classList.toggle("fa-solid");
+      });
+
+      shuffle.addEventListener("mouseover", function () {
+        shuffle.classList.toggle("fa-sharp");
+      });
+
+      shuffle.addEventListener("mouseout", function () {
+        shuffle.classList.toggle("fa-sharp");
+      });
+
+
+
+      function setCustomCursor() {
+      document.body.style.cursor = "url('img/cursor.png'), auto";
+    }
+
+    // Call the function to set the custom cursor when the page loads
+    window.onload = setCustomCursor;
+    </script>
+  </body>
+</html>

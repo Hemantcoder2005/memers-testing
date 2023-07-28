@@ -1,0 +1,43 @@
+{%extends 'accounts_basic.html'%}
+{%load static%}
+{%block title%}Login{%endblock%}
+{%block body%}
+<div class="form-container">
+    <div class="title">MEMER</div>
+    <div class="login-title">
+        <h1>Login</h1>
+    </div>
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        <div class="username-container">
+            <input type="text" placeholder="Username or Email" name="username" required {%if is_error%}{{username}}{%endif%}/>
+        </div>
+        <div class="password-conatiner">
+            <input type="password" placeholder="Password" name="password" required/>
+        </div>
+        {%if is_error%}
+        <p style="color: red;">{{error_mssg}}</p>
+        {%if is_verified%}
+            <a href="/accounts/signup">Verify</a>
+        {%endif%}
+
+        {%endif%}
+        <div class="submit-button">
+            <button type="submit">Submit</button>
+        </div>
+        <div class="divider">OR</div>
+        <a href="{% url 'social:begin' 'google-oauth2' %}"><div class="google"><img src="{%static 'img/bg/123.webp '%}" alt="">Log in with Google</a></div></a>
+        <div class="sandf">
+            <p>
+                <a href="/accounts/signup" style="padding-right: 1px;">Sign Up</a>
+                <span style="color: rgb(0,0,140);">|</span>
+                <a href="/accounts/forgotpassword">Forgot Password
+                </a>
+            </p>
+        </div>
+    </form>
+</div>
+
+
+
+{%endblock%}

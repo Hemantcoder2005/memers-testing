@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      color: #007bff;
+    }
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #555;
+    }
+    input[type="text"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+    }
+    input[type="file"] {
+      margin-bottom: 20px;
+    }
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .tag {
+      background-color: #007bff;
+      color: #fff;
+      padding: 5px 10px;
+      margin: 5px;
+      border-radius: 4px;
+    }
+    .tag .close {
+      margin-left: 8px;
+      cursor: pointer;
+    }
+    .post-btn {
+      background-color: #007bff;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+    .post-btn:hover {
+      background-color: #0056b3;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      .tags-container {
+        flex-direction: column;
+      }
+      .tag {
+        margin: 5px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h1>Create a Meme</h1>
+    <form method="post" enctype="multipart/form-data">
+        {%csrf_token%}
+      <label for="postTitle">Title:</label>
+      <input type="text" id="postTitle" name="title" required>
+
+      <label for="tags">Tags:</label>
+        <input type="text" name="tagged" id="tags" placeholder="Enter tags separated by commas">
+
+     
+
+      <label for="postImage">Image Upload:</label>
+      <input type="file" id="postImage" name="meme" accept="image/*" required>
+
+      <img id="imagePreview" class="image-preview" src="#" alt="Image Preview">
+
+      <button type="submit" class="post-btn">Post</button>
+    </form>
+  </div>
+
+  <script>
+    function addTag() {
+      const tagsContainer = document.getElementById('tagsContainer');
+      const tagInput = document.getElementById('tagInput');
+      const tagText = tagInput.value.trim();
+
+      if (tagText !== '') {
+        const tag = document.createElement('span');
+        tag.className = 'tag';
+        tag.textContent = tagText;
+
+        const closeButton = document.createElement('span');
+        closeButton.className = 'close';
+        closeButton.textContent = 'x';
+        closeButton.addEventListener('click', () => {
+          tagsContainer.removeChild(tag);
+        });
+
+        tag.appendChild(closeButton);
+        tagsContainer.appendChild(tag);
+        tagInput.value = '';
+      }
+    }
+    // Image preview function
+    const postImageInput = document.getElementById('postImage');
+    const imagePreview = document.getElementById('imagePreview');
+
+    postImageInput.addEventListener('change', function() {
+      const file = postImageInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function() {
+        imagePreview.src = reader.result;
+        imagePreview.style.display = 'block';
+      };
+
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
