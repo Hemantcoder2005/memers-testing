@@ -1,0 +1,10 @@
+celery
+djangorestframework
+social-auth-app-django
+django_celery_results
+numpy
+pandas
+nltk
+scikit-learn
+opencv-python
+pytesseract 
